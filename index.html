@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>will you be mine?</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      overflow: hidden;
+      text-align: center;
+      color: #fff;
+    }
+
+    h1 {
+      margin-top: 15vh;
+      font-size: 3em;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .btn-group {
+      margin-top: 2em;
+    }
+
+    button {
+      padding: 1em 2em;
+      font-size: 1.2em;
+      background-color: #ff4081;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      margin: 0 1em;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://em-content.zobj.net/thumbs/120/apple/354/red-heart_2764-fe0f.png') no-repeat center;
+      background-size: contain;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { top: -20px; opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>I love you ❤️</h1>
+  <p>Will you be mine?</p>
+  <div class="btn-group">
+    <button onclick="launchConfetti()">Yes</button>
+    <button onclick="handleNo()">No</button>
+  </div>
+
+  <audio autoplay loop muted playesinline>
+    <source src="Dhun Ringtone Saiyaara - MobCup.Com.Co.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    function launchConfetti() {
+      confetti({
+        particleCount: 200,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+      alert("Yay! 💍 Let's start forever together!");
+    }
+
+    function handleNo() {
+      alert("Aww 😢 Maybe next time... But i still loves you!");
+    }
+
+    // Heart rain
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 300);
+  </script>
+</body>
+</html>
